@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">QuickAlert</string>
+    <string name="action_settings">Settings</string>
+    <string name="about">About</string>
+    <string name="Set">Activate</string>
+    <string name="Reset">Reset</string>
+	<string name="txtAlert_begin">The alert will ring in</string>
+	<string name="txtAlert_and">and</string>
+	<string name="hours">hours</string>
+	<string name="minutes">minutes</string>
+	<string name="hour">hour</string>
+	<string name="minute">minute</string>
+	<string name="about_text">Quick Alert! Your new favorite program</string>
+	<string name="alert_error_text">Error: Alert has not been setup properly</string>
+	<string name="alert_exists_text">There is already a similar alert</string>
+</resources>

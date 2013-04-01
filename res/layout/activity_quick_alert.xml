@@ -1,0 +1,184 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2f2f2f"
+    android:orientation="vertical"
+    tools:context=".QuickAlert" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent" >
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center" >
+
+                <TableRow
+                    android:id="@+id/tableRow7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp" >
+
+                    <TableRow
+                        android:id="@+id/tableRow2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical" >
+
+                        <EditText
+                            android:id="@+id/txtHours"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@android:color/background_light"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:text="0" >
+
+                            
+                        </EditText>
+
+                        <TextView
+                            android:id="@+id/TextView01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="hrs."
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#ffffff" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <Button
+                                android:id="@+id/btnplus1hr"
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:minWidth="48dp"
+                                android:onClick="addOneHour"
+                                android:text="+1"
+                                android:textColor="#0f0f0f" >
+							<requestFocus />
+							</Button>
+                            <Button
+                                android:id="@+id/btnminus1hr"
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:minWidth="48dp"
+                                android:onClick="subOneHour"
+                                android:text="-1"
+                                android:textColor="#0f0f0f" />
+                        </LinearLayout>
+                    </TableRow>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TableRow
+                        android:id="@+id/tableRow5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical" >
+
+                        <EditText
+                            android:id="@+id/txtMinutes"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@android:color/background_light"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:text="5" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="min."
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#ffffff" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <Button
+                                android:id="@+id/btnplus5min"
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:minWidth="48dp"
+                                android:onClick="addFiveMinutes"
+                                android:text="+5"
+                                android:textColor="#0f0f0f" />
+
+                            <Button
+                                android:id="@+id/btnminus5min"
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:minWidth="48dp"
+                                android:onClick="subFiveMinutes"
+                                android:text="-5"
+                                android:textColor="#0f0f0f" />
+                        </LinearLayout>
+                    </TableRow>
+                </TableRow>
+            </TableRow>
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="activate"
+                android:text="@string/Set"
+                android:textColor="#0f0f0f" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="reset"
+                android:text="@string/Reset"
+                android:textColor="#0f0f0f" />
+
+            <ListView
+                android:id="@+id/lstAlerts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+        </TableLayout>
+    </ScrollView>
+
+</LinearLayout>
