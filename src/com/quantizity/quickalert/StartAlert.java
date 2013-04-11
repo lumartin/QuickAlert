@@ -5,8 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-public class StartAlert extends BroadcastReceiver {
+public class StartAlert<currentAlert> extends BroadcastReceiver {
 
+	private static Alert currentAlert = null;
 	private static AlertStorage alerts = null;
 	@Override
 	public void onReceive(Context ctx, Intent intent) {
@@ -36,11 +37,26 @@ public class StartAlert extends BroadcastReceiver {
 				alerts.loadAlerts(ctx);				
 			}
 			boolean fire = false;
-			// TODO: iterate over list of alerts and start alarm in a different thread if goal reached
-			// TODO: create a new activity for alert to show a dialog with a button (or 2 if snooze available) and a message (optional)
-			// TODO: once alert thread has started update alert list if recurring or delete alert
-			// TODO: finally, persist list of alerts, and make QuickAlert app to reload content
-			if(fire) QuickAlert.reloadContent();
+			// iterate over list of alerts and start alarm in a different thread if goal reached
+			for(Alert currentAlert : alerts.getAlerts()) {
+				if (currentAlert.readyToFire()) {
+					Thread thread = new Thread(){
+						@Override
+						public void run() {
+							StartAlert.currentAlert.showAlert();
+						}
+					};
+					fire = true;
+					thread.start();
+				}				
+				// once alert thread has started update alert list if recurring or delete alert
+				// finally, persist list of alerts, and make QuickAlert app to reload content
+				if(fire) {
+					alerts.removeAlert(currentAlert);
+					alerts.persistAlerts(ctx);
+					QuickAlert.reloadContent();
+				}		
+			}
 		}
 		else if (intent.getAction().equals(QuickAlert.UPDATE_ACTION)) {
 			if(intent!=null && intent.getStringExtra("when")!=null) {

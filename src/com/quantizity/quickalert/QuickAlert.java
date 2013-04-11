@@ -219,13 +219,13 @@ public class QuickAlert extends Activity {
 			Toast.makeText(this, R.string.alert_error_text, Toast.LENGTH_SHORT).show();
 			return;
 		}
-		this.alStor.persistAlerts(this);
+		alStor.persistAlerts(this);
 		
 		// send parameters to broadcast receiver for new alert
 		
 		Intent i = new Intent();
 		i.putExtra("when", textAlert);
-		i.setAction(this.UPDATE_ACTION);
+		i.setAction(UPDATE_ACTION);
 		sendBroadcast(i);
 	}
 	

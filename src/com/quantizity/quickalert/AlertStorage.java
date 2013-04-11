@@ -141,7 +141,7 @@ public class AlertStorage {
 					alert.setDuration(Long.valueOf(elAlert.getAttributes().getNamedItem("duration").getNodeValue()));
 					Node description = elAlert.getFirstChild();
 					alert.setDescription(description.getNodeValue());
-					this.addAlert(alert);
+					if (!alert.isOld()) this.addAlert(alert);
 				}
 			}
 		}
