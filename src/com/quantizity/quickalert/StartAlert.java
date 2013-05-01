@@ -43,7 +43,7 @@ public class StartAlert<currentAlert> extends BroadcastReceiver {
 					Thread thread = new Thread(){
 						@Override
 						public void run() {
-							StartAlert.currentAlert.showAlert();
+							StartAlert.currentAlert.showAlert(QuickAlert.getAppContext());
 						}
 					};
 					fire = true;

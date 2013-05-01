@@ -166,7 +166,7 @@
                 android:textColor="#0f0f0f" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/ok_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:onClick="reset"

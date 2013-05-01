@@ -15,4 +15,8 @@
     <string name="about_text">Quick Alert es el programa de moda!</string>
 	<string name="alert_error_text">Error: La alerta no se ha definido correctamente</string>
 	<string name="alert_exists_text">Ya existe una alerta similar</string>
+	<string name="alert_error_max_elements">No puede crear mas alertas</string>
+	<string name="accept">Aceptar</string>
+	<string name="snooze">Posponer</string>
+	<string name="txtAlert_default">Alerta QuickAlert!</string>
 </resources>

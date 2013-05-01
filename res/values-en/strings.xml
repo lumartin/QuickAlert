@@ -15,4 +15,8 @@
 	<string name="about_text">Quick Alert! Your new favorite program</string>
 	<string name="alert_error_text">Error: Alert has not been setup properly</string>
 	<string name="alert_exists_text">There is already a similar alert</string>
+	<string name="alert_error_max_elements">You can not create more alerts</string>
+	<string name="accept">OK</string>
+	<string name="snooze">Snooze</string>
+	<string name="txtAlert_default">QuickAlert Alert!</string>
 </resources>

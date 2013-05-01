@@ -25,7 +25,7 @@ import org.xml.sax.SAXException;
 import android.content.Context;
 
 public class AlertStorage {
-	private final int MAX_ELEMENTS = 10;
+	private final int MAX_ELEMENTS = 1;
 	
 	private Vector<Alert> alerts = null;
 	
@@ -49,7 +49,7 @@ public class AlertStorage {
 	
 	public int addAlert(Alert alert) 
 	{
-		if (alerts.size()==MAX_ELEMENTS) return -1;
+		if (alerts.size()==MAX_ELEMENTS) return -2;
 		if (alert.getDuration()<=0 || alert.getEndTime()==null) return -1;
 		alerts.add(alert);
 		return 0;

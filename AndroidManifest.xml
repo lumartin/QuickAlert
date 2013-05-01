@@ -28,6 +28,7 @@
             android:name="AcercaDe"
             android:label="@string/about" android:theme="@android:style/Theme.Dialog">
         </activity>
+        
         <service android:name="AlertService"></service>
         <receiver android:name="StartAlert" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
@@ -36,5 +37,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
         </receiver>
+        <activity android:name="AlertActivity" android:showOnLockScreen="true" android:theme="@android:style/Theme.Dialog"></activity>
     </application>
 </manifest>

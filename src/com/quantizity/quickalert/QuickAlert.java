@@ -76,6 +76,18 @@ public class QuickAlert extends Activity {
 	public static void reloadContent() {
 		alStor.loadAlerts(ctx);
 	}
+	
+	public static AlertStorage getAlertStorage() {
+		if (alStor==null) {
+			try {
+				alStor = new AlertStorage();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		alStor.loadAlerts(ctx);
+		return alStor;
+	}
 
 	public static Context getAppContext() {
 		return ctx;
@@ -215,8 +227,12 @@ public class QuickAlert extends Activity {
 			Toast.makeText(this, R.string.alert_exists_text, Toast.LENGTH_SHORT).show();
 			return;
 		}
-		if (alStor.addAlert(alert)!=0) {
+		int retCode = alStor.addAlert(alert);
+		if (retCode==-1) {
 			Toast.makeText(this, R.string.alert_error_text, Toast.LENGTH_SHORT).show();
+			return;
+		} else if (retCode==-2) {
+			Toast.makeText(this, R.string.alert_error_max_elements, Toast.LENGTH_SHORT).show();
 			return;
 		}
 		alStor.persistAlerts(this);

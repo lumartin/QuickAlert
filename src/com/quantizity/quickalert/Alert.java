@@ -2,14 +2,48 @@ package com.quantizity.quickalert;
 
 import java.util.Date;
 
+import android.content.Context;
+import android.content.Intent;
+
 public class Alert {
 
 	private String description;
 	private Long duration;
 	private Date initTime;
 	private Date endTime;
-	private boolean recurring;
-	private boolean fired;
+	private boolean recurring = false;
+	private boolean fired = false;
+	private boolean notification = false;
+	private boolean snooze = false;
+	private boolean ringTone;
+	private String ringTonePath;
+	private boolean vibrate;
+	
+	public boolean isVibrate() {
+		return vibrate;
+	}
+
+	public void setVibrate(boolean vibrate) {
+		this.vibrate = vibrate;
+	}
+
+	public boolean isRingTone() {
+		return ringTone;
+	}
+
+	public void setRingTone(boolean ringTone) {
+		this.ringTone = ringTone;
+	}
+
+	public String getRingTonePath() {
+		return ringTonePath;
+	}
+
+	public void setRingTonePath(String ringTonePath) {
+		this.ringTonePath = ringTonePath;
+	}
+
+	private int timesSnoozed;
 	
 	public Alert() {
 		description = "";
@@ -64,20 +98,42 @@ public class Alert {
 		this.fired = fired;
 	}
 	
-	public void showAlert() {
-		// TODO: create a new activity for alert to show a dialog with a button (or 2 if snooze available) and a message (optional)
-		// Code for vibration
-		// get vibrator
-		//Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		// create a vibration pattern
-		//long[] pattern = { 0, 200, 500 };
-		// repeat pattern until canceled
-		//v.vibrate(pattern, 0);
-		// cancel vibration
-		//v.cancel();
+	public void showAlert(Context ctx) {
+		Intent i = new Intent(ctx, AlertActivity.class);
+		i.putExtra("notification", notification);
+		i.putExtra("snooze", snooze);
+		i.putExtra("timesSnooze", timesSnoozed);
+		i.putExtra("description", description);
+		i.putExtra("vibrate", vibrate);
+		ctx.startActivity(i);
 	}
 	public boolean isOld() {
 		if (this.endTime.getTime() < System.currentTimeMillis()) return true;
 		return false;
 	}
+
+	public boolean isNotification() {
+		return notification;
+	}
+
+	public void setNotification(boolean notification) {
+		this.notification = notification;
+	}
+
+	public boolean isSnooze() {
+		return snooze;
+	}
+
+	public void setSnooze(boolean snooze) {
+		this.snooze = snooze;
+	}
+
+	public int getTimesSnoozed() {
+		return timesSnoozed;
+	}
+
+	public void setTimesSnoozed(int timesSnoozed) {
+		this.timesSnoozed = timesSnoozed;
+	}
+	
 }
