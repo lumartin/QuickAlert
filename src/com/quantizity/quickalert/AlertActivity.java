@@ -84,7 +84,7 @@ public class AlertActivity extends Activity {
 			
 		}
 		// TODO: clear notification, stop tone, destroy view
-		
+		if(myAlert.isVibrate()) vibrator.cancel();
 		this.finish();
 	}
 	

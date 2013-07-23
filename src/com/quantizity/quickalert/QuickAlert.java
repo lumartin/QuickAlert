@@ -38,7 +38,7 @@ public class QuickAlert extends Activity {
 			e.printStackTrace();
 		}
 		
-		// Comprobación de que se introduce por teclado un número y es válido en el rango definido
+		// Comprobaci√≥n de que se introduce por teclado un n√∫mero y es v√°lido en el rango definido
 		// Se comprueba al cambiar el foco del elemento
 		listener = new OnFocusChangeListener() {
 			public void onFocusChange(View v, boolean hasFocus) {
@@ -123,9 +123,9 @@ public class QuickAlert extends Activity {
 		if (txtHours!=null) {
 			try {
 				num = (Integer)Integer.parseInt(txtHours.getText().toString());
-				num = (num+1)%24; // m·ximo 1 dÌa
+				num = (num+1)%24; // m√°ximo 1 dia
 			} catch (Exception ex) {
-				// No es numÈrico
+				// No es numerico
 				num=1;
 			}
 			txtHours.setText(num.toString());
@@ -138,9 +138,9 @@ public class QuickAlert extends Activity {
 		if (txtMinutes!=null) {
 			try {
 				num = (Integer)Integer.parseInt(txtMinutes.getText().toString());
-				num = (num+5)%60; // m·ximo 60 minutos en una hora
+				num = (num+5)%60; // m√°ximo 60 minutos en una hora
 			} catch (Exception ex) {
-				// No es numÈrico
+				// No es num√©rico
 				num=5;
 			}
 			txtMinutes.setText(num.toString());
@@ -156,7 +156,7 @@ public class QuickAlert extends Activity {
 				num--;
 				if (num<0) num=24-(-num);
 			} catch (Exception ex) {
-				// No es numÈrico
+				// No es num√©rico
 				num=0;
 			}
 			txtHours.setText(num.toString());
@@ -172,7 +172,7 @@ public class QuickAlert extends Activity {
 				num=num-5;
 				if (num<0) num=60-(-num);
 			} catch (Exception ex) {
-				// No es numÈrico
+				// No es num√©rico
 				num=5;
 			}
 			txtMinutes.setText(num.toString());
