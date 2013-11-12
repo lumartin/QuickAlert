@@ -1,7 +1,5 @@
 package com.quantizity.quickalert;
 
-import java.util.Date;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +11,8 @@ import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.Date;
 
 public class QuickAlert extends Activity {
 	EditText txtHours, txtMinutes;
@@ -37,7 +37,8 @@ public class QuickAlert extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+        lista.setAdapter(new Adaptador(this, alStor.getAlerts()));
+
 		// Comprobación de que se introduce por teclado un número y es válido en el rango definido
 		// Se comprueba al cambiar el foco del elemento
 		listener = new OnFocusChangeListener() {
@@ -220,12 +221,12 @@ public class QuickAlert extends Activity {
 		Date initTime = new Date();
 		initTime.setTime(current);
 		alert.setInitTime(initTime);
-		Date endTime = new Date();
-		endTime.setTime(current+timeToFire);
-		alert.setEndTime(endTime);
-		if (alStor.hasSameEndTime(alert)) {
-			Toast.makeText(this, R.string.alert_exists_text, Toast.LENGTH_SHORT).show();
-			return;
+            Date endTime = new Date();
+            endTime.setTime(current+timeToFire);
+            alert.setEndTime(endTime);
+            if (alStor.hasSameEndTime(alert)) {
+                Toast.makeText(this, R.string.alert_exists_text, Toast.LENGTH_SHORT).show();
+                return;
 		}
 		int retCode = alStor.addAlert(alert);
 		if (retCode==-1) {
@@ -238,7 +239,9 @@ public class QuickAlert extends Activity {
 		alStor.persistAlerts(this);
 		
 		// send parameters to broadcast receiver for new alert
-		
+
+        // TODO : activar alarma para el tiempo solicitado
+
 		Intent i = new Intent();
 		i.putExtra("when", textAlert);
 		i.setAction(UPDATE_ACTION);
